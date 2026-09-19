@@ -11,7 +11,7 @@ class Settings(BaseSettings):
     """
 
     # Database
-    database_url: str = "postgresql+asyncpg://career:career@localhost:5432/career_intel"
+    database_url: str = "postgresql+asyncpg://career:career@localhost:5434/career_intel"
 
     # Auth
     secret_key: str = "change-me-to-a-different-random-string"

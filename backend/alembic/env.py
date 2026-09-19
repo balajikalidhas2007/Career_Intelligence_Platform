@@ -15,7 +15,7 @@ from app.database import Base
 
 # Import all models here so Alembic can detect them for autogenerate.
 # As models are added, import them below:
-# from app.models import user, profile, skill, evidence, ...
+import app.models
 
 # Alembic Config object
 config = context.config
