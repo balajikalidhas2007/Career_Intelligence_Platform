@@ -32,3 +32,7 @@ class User(Base):
     refresh_tokens: Mapped[List["RefreshToken"]] = relationship(
         "RefreshToken", back_populates="user", cascade="all, delete-orphan"
     )
+    evidence_items: Mapped[List["Evidence"]] = relationship(
+        "Evidence", back_populates="user", cascade="all, delete-orphan"
+    )
+
