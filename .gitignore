@@ -1,0 +1,55 @@
+# Career Intelligence Platform
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+*.egg
+.eggs/
+*.whl
+.venv/
+venv/
+env/
+
+# Node.js
+node_modules/
+.next/
+out/
+.vercel
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Docker
+data/
+
+# Uploaded files (local storage)
+backend/data/
+
+# Test / Coverage
+.coverage
+htmlcov/
+.pytest_cache/
+coverage/
+*.lcov
+
+# Build artifacts
+*.log
