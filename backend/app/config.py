@@ -15,7 +15,10 @@ class Settings(BaseSettings):
 
     # Auth
     secret_key: str = "change-me-to-a-different-random-string"
-    access_token_expire_minutes: int = 15
+    access_token_expire_seconds: int = 1800
+    refresh_token_expire_days: int = 30
+    secure_cookies: bool = False
+    github_token_encryption_key: str = ""
     github_client_id: str = ""
     github_client_secret: str = ""
 
