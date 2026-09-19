@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 
 export default function DashboardPage() {
@@ -8,10 +8,14 @@ export default function DashboardPage() {
   const [user, setUser] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [accessToken, setAccessToken] = useState<string | null>(null);
+  const hasFetched = useRef(false);
 
   useEffect(() => {
+    if (hasFetched.current) return;
+    hasFetched.current = true;
+
     // Attempt to exchange the HttpOnly refresh cookie for a short-lived access token
-    fetch("http://localhost:8000/api/v1/auth/refresh", {
+    fetch("http://localhost:8010/api/v1/auth/refresh", {
       method: "POST",
       credentials: "include", // Essential for sending the HttpOnly cookie
     })
@@ -21,9 +25,9 @@ export default function DashboardPage() {
       })
       .then((data) => {
         setAccessToken(data.access_token);
-        
+
         // Now fetch user data using the new in-memory access token
-        return fetch("http://localhost:8000/api/v1/auth/me", {
+        return fetch("http://localhost:8010/api/v1/auth/me", {
           headers: {
             Authorization: `Bearer ${data.access_token}`
           }
@@ -57,21 +61,21 @@ export default function DashboardPage() {
   return (
     <div style={{ padding: "2rem", maxWidth: "800px", margin: "0 auto" }}>
       <h1>Dashboard</h1>
-      
-      <div style={{ 
-        marginTop: "2rem", 
-        padding: "1.5rem", 
-        border: "1px solid #eaeaea", 
+
+      <div style={{
+        marginTop: "2rem",
+        padding: "1.5rem",
+        border: "1px solid #eaeaea",
         borderRadius: "8px",
         display: "flex",
         alignItems: "center",
         gap: "1rem"
       }}>
         {user?.avatar_url && (
-          <img 
-            src={user.avatar_url} 
-            alt="Avatar" 
-            style={{ width: "64px", height: "64px", borderRadius: "50%" }} 
+          <img
+            src={user.avatar_url}
+            alt="Avatar"
+            style={{ width: "64px", height: "64px", borderRadius: "50%" }}
           />
         )}
         <div>
@@ -81,9 +85,9 @@ export default function DashboardPage() {
       </div>
 
       <div style={{ marginTop: "2rem" }}>
-        <button 
+        <button
           onClick={() => {
-            fetch("http://localhost:8000/api/v1/auth/logout", { 
+            fetch("http://localhost:8010/api/v1/auth/logout", {
               method: "POST",
               credentials: "include",
             })
@@ -92,11 +96,11 @@ export default function DashboardPage() {
                 router.push("/");
               });
           }}
-          style={{ 
-            padding: "0.5rem 1rem", 
-            backgroundColor: "#f44336", 
-            color: "white", 
-            border: "none", 
+          style={{
+            padding: "0.5rem 1rem",
+            backgroundColor: "#f44336",
+            color: "white",
+            border: "none",
             borderRadius: "4px",
             cursor: "pointer"
           }}

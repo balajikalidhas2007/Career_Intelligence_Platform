@@ -33,7 +33,7 @@ class Settings(BaseSettings):
     local_storage_path: str = "./data/uploads"
 
     # Application URLs
-    backend_url: str = "http://localhost:8000"
+    backend_url: str = "http://localhost:8010"
     frontend_url: str = "http://localhost:3000"
 
     model_config = {"env_file": ".env", "env_file_encoding": "utf-8"}

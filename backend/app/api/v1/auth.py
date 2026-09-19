@@ -23,19 +23,20 @@ GITHUB_TOKEN_URL = "https://github.com/login/oauth/access_token"
 GITHUB_API_USER_URL = "https://api.github.com/user"
 
 @router.get("/github")
-async def login_github(response: Response):
+async def login_github():
     """Redirect to GitHub for authentication."""
     state = secrets.token_urlsafe(32)
-    response.set_cookie(
+    redirect_uri = f"{settings.backend_url}/api/v1/auth/github/callback"
+    url = f"{GITHUB_AUTH_URL}?client_id={settings.github_client_id}&redirect_uri={redirect_uri}&state={state}&scope=read:user user:email repo"
+    redirect_response = RedirectResponse(url)
+    redirect_response.set_cookie(
         key="oauth_state",
         value=state,
         httponly=True,
         max_age=600,
         samesite="lax",
     )
-    redirect_uri = f"{settings.backend_url}/api/v1/auth/github/callback"
-    url = f"{GITHUB_AUTH_URL}?client_id={settings.github_client_id}&redirect_uri={redirect_uri}&state={state}&scope=read:user user:email repo"
-    return RedirectResponse(url)
+    return redirect_response
 
 @router.get("/github/callback")
 async def github_callback(

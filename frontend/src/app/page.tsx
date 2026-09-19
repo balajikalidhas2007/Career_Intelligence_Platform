@@ -10,7 +10,7 @@ export default function Home() {
             <span className={styles["header__logo-icon"]}>⚡</span>
             Career Intelligence
           </div>
-          <a href="http://localhost:8000/api/v1/auth/github" style={{ textDecoration: 'none' }}>
+          <a href="http://localhost:8010/api/v1/auth/github" style={{ textDecoration: 'none' }}>
             <button className={styles.header__cta} id="header-sign-in">
               <svg
                 className={styles["header__cta-icon"]}
@@ -47,7 +47,7 @@ export default function Home() {
         </p>
 
         <div className={styles.hero__actions}>
-          <a href="http://localhost:8000/api/v1/auth/github" style={{ textDecoration: 'none' }}>
+          <a href="http://localhost:8010/api/v1/auth/github" style={{ textDecoration: 'none' }}>
             <button className={`${styles.btn} ${styles["btn--primary"]}`} id="hero-get-started">
               Get Started — It&apos;s Free
             </button>

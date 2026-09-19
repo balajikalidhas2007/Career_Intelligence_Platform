@@ -67,7 +67,7 @@ pip install -e ".[dev]"
 uvicorn app.main:app --reload
 ```
 
-Backend runs at http://localhost:8000. API docs at http://localhost:8000/docs.
+Backend runs at http://localhost:8010. API docs at http://localhost:8010/docs.
 
 ### 4. Frontend
 
