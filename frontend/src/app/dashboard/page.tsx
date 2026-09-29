@@ -84,7 +84,7 @@ export default function DashboardPage() {
         </div>
       </div>
 
-      <div style={{ marginTop: "2rem" }}>
+      <div style={{ marginTop: "2rem", display: "flex", gap: "1rem", flexWrap: "wrap" }}>
         <button
           onClick={() => router.push("/resume")}
           style={{
@@ -98,6 +98,20 @@ export default function DashboardPage() {
           }}
         >
           📄 Resume Analysis
+        </button>
+        <button
+          onClick={() => router.push("/github")}
+          style={{
+            padding: "0.75rem 1.5rem",
+            backgroundColor: "#24292e",
+            color: "white",
+            border: "none",
+            borderRadius: "4px",
+            cursor: "pointer",
+            fontSize: "1rem",
+          }}
+        >
+          🐙 GitHub Repos
         </button>
       </div>
 
