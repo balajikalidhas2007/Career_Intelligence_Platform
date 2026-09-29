@@ -86,6 +86,23 @@ export default function DashboardPage() {
 
       <div style={{ marginTop: "2rem" }}>
         <button
+          onClick={() => router.push("/resume")}
+          style={{
+            padding: "0.75rem 1.5rem",
+            backgroundColor: "#1976d2",
+            color: "white",
+            border: "none",
+            borderRadius: "4px",
+            cursor: "pointer",
+            fontSize: "1rem",
+          }}
+        >
+          📄 Resume Analysis
+        </button>
+      </div>
+
+      <div style={{ marginTop: "2rem" }}>
+        <button
           onClick={() => {
             fetch("http://localhost:8010/api/v1/auth/logout", {
               method: "POST",
